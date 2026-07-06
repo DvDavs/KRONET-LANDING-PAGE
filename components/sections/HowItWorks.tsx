@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { MacWindow } from "@/components/ui/MacWindow";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { HOW_IT_WORKS } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -32,27 +33,29 @@ export function HowItWorks() {
               <div className="flex h-full flex-col">
                 {/* media */}
                 <div className="relative">
-                  <MacWindow>
-                    <div
-                      className={cn("relative", dark ? "bg-navy-ink" : "bg-white")}
-                      style={{ aspectRatio: step.image.aspect }}
-                    >
+                  <Lightbox src={step.image.src} alt={step.image.alt}>
+                    <MacWindow className="group">
                       <div
-                        className={cn(
-                          "absolute",
-                          dark ? "inset-2 sm:inset-3" : "inset-3 sm:inset-4"
-                        )}
+                        className={cn("relative", dark ? "bg-navy-ink" : "bg-white")}
+                        style={{ aspectRatio: step.image.aspect }}
                       >
-                        <Image
-                          src={step.image.src}
-                          alt={step.image.alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-contain"
-                        />
+                        <div
+                          className={cn(
+                            "absolute",
+                            dark ? "inset-2 sm:inset-3" : "inset-3 sm:inset-4"
+                          )}
+                        >
+                          <Image
+                            src={step.image.src}
+                            alt={step.image.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-contain transition-transform duration-500 ease-brand will-change-transform group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </MacWindow>
+                    </MacWindow>
+                  </Lightbox>
                 </div>
 
                 {/* text */}

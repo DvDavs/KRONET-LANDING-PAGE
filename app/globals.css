@@ -10,14 +10,16 @@
   --cyan-bright: #3dc5dd;
   --muted: #6b7280;
   --offwhite: #fafafa;
-  /* Offset de anclas = navbar (64px mobile) + aire. Fuente única para el
-     scroll nativo (scroll-padding-top) y para Lenis (offset dinámico). */
-  --nav-offset: 5.25rem; /* 84px */
+  /* Offset de anclas = altura del navbar (64px mobile / 80px desktop). El aire
+     visual sobre el heading lo da el py-section/pt-section propio de cada
+     sección (clamp 4-8rem), así que NO sumamos padding extra acá o caerías
+     demasiado alto. Fuente única: scroll nativo (scroll-padding-top) + Lenis. */
+  --nav-offset: 4rem; /* 64px */
 }
 
 @media (min-width: 768px) {
   :root {
-    --nav-offset: 6.25rem; /* 100px — navbar 80px + 20px de aire */
+    --nav-offset: 5rem; /* 80px */
   }
 }
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Cloud, Layers, BarChart3, Check } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { MacWindow } from "@/components/ui/MacWindow";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { SUITE } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -77,22 +78,24 @@ export function Suite() {
                   className={cn(flip && "md:order-1")}
                 >
                   <div className={cn("mx-auto md:max-w-none", MEDIA[i].mobileMaxW)}>
-                    <MacWindow url={URLS[i]}>
-                      <div
-                        className="relative bg-white"
-                        style={{ aspectRatio: MEDIA[i].aspect }}
-                      >
-                        <div className="absolute inset-3 sm:inset-4">
-                          <Image
-                            src={mod.image}
-                            alt={mod.alt}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-contain"
-                          />
+                    <Lightbox src={mod.image} alt={mod.alt}>
+                      <MacWindow url={URLS[i]} className="group">
+                        <div
+                          className="relative bg-white"
+                          style={{ aspectRatio: MEDIA[i].aspect }}
+                        >
+                          <div className="absolute inset-3 sm:inset-4">
+                            <Image
+                              src={mod.image}
+                              alt={mod.alt}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-contain transition-transform duration-500 ease-brand will-change-transform group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </MacWindow>
+                      </MacWindow>
+                    </Lightbox>
                   </div>
                 </Reveal>
               </div>

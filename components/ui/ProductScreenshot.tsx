@@ -35,7 +35,7 @@ export function ProductScreenshot({
   const frame = (
     <div
       className={cn(
-        "relative mx-auto w-auto max-w-full md:w-full",
+        "group relative mx-auto w-auto max-w-full md:w-full",
         density === "compact"
           ? "max-h-52 sm:max-h-60"
           : "max-h-64 sm:max-h-80",
@@ -46,7 +46,7 @@ export function ProductScreenshot({
     >
       <div
         className={cn(
-          "absolute",
+          "absolute overflow-hidden",
           dark ? "inset-2 sm:inset-3" : "inset-2.5 sm:inset-4"
         )}
       >
@@ -55,7 +55,7 @@ export function ProductScreenshot({
           alt={alt}
           fill
           sizes={sizes}
-          className="object-contain"
+          className="object-contain transition-transform duration-500 ease-brand will-change-transform group-hover:scale-[1.06] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
       </div>
     </div>
