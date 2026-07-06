@@ -81,18 +81,34 @@ export const HOW_IT_WORKS = [
     time: "~1 día",
     title: "Instalas",
     body: "El kiosko llega preconfigurado. Conectas corriente y red. Listo.",
+    image: {
+      src: "/kiosko/idle.png",
+      alt: "Kiosko Kronet preconfigurado y conectado",
+      aspect: "2200/1440",
+      dark: true,
+    },
   },
   {
     step: "02",
     time: "~2-3 días",
     title: "Enrolas",
     body: "Flujo guiado paso a paso. Cada empleado se enrola en menos de un minuto.",
+    image: {
+      src: "/app/huella-dedo.png",
+      alt: "Flujo guiado de enrolamiento de huella, selección de dedo",
+      aspect: "1332/1144",
+    },
   },
   {
     step: "03",
     time: "desde el día 1",
     title: "Mides",
     body: "Reportes automáticos desde el primer día. El cierre de nómina deja de ser un dolor.",
+    image: {
+      src: "/app/reporte-status.png",
+      alt: "Reporte de asistencias con estatus por empleado: retardo, tolerancia, normal, falta",
+      aspect: "920/672",
+    },
   },
 ] as const;
 

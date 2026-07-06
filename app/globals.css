@@ -10,6 +10,15 @@
   --cyan-bright: #3dc5dd;
   --muted: #6b7280;
   --offwhite: #fafafa;
+  /* Offset de anclas = navbar (64px mobile) + aire. Fuente única para el
+     scroll nativo (scroll-padding-top) y para Lenis (offset dinámico). */
+  --nav-offset: 5.25rem; /* 84px */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --nav-offset: 6.25rem; /* 100px — navbar 80px + 20px de aire */
+  }
 }
 
 @layer base {
@@ -17,6 +26,12 @@
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     scroll-behavior: smooth;
+    /* Offset del navbar fijo para saltos de ancla nativos (reduced-motion / ?nolenis).
+       Con Lenis activo el offset lo maneja lenis.scrollTo con el mismo valor. */
+    scroll-padding-top: var(--nav-offset);
+    /* clip (no hidden) mata el scroll horizontal fantasma de los decorativos
+       sin crear scroll container — position:sticky sigue funcionando. */
+    overflow-x: clip;
   }
   /* Lenis controla el scroll; deshabilitamos el smooth nativo cuando está activo */
   html.lenis,
@@ -38,7 +53,7 @@
     color: var(--navy);
     font-family: var(--font-sans), system-ui, sans-serif;
     font-feature-settings: "ss01", "cv11", "cv05";
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -97,12 +112,14 @@
     background-size: 26px 26px;
   }
 
-  /* Transición claro → oscuro (islas navy del brief) */
+  /* Transición claro → oscuro (islas navy del brief).
+     Se usa navy con alpha 0 (no `transparent`, que es negro-transparente y
+     ensucia el fade con una banda gris lavada sobre el offwhite). */
   .fade-to-ink {
-    background: linear-gradient(180deg, transparent 0%, var(--navy-ink) 100%);
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0) 0%, var(--navy-ink) 100%);
   }
   .fade-from-ink {
-    background: linear-gradient(180deg, var(--navy-ink) 0%, transparent 100%);
+    background: linear-gradient(180deg, var(--navy-ink) 0%, rgba(10, 22, 40, 0) 100%);
   }
 
   /* Card sobre fondo oscuro (estilo posts). Sin backdrop-filter por

@@ -21,7 +21,7 @@ const MEDIA = [
 
 export function Suite() {
   return (
-    <section id="suite" className="relative scroll-mt-24 bg-white py-section">
+    <section id="suite" className="relative bg-white py-section">
       <div className="container-grid">
         <Reveal className="max-w-3xl">
           <p className="eyebrow text-cyan">

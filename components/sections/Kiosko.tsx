@@ -43,7 +43,7 @@ export function Kiosko() {
   });
 
   return (
-    <section id="kiosko" className="relative scroll-mt-24 bg-navy-ink text-white">
+    <section id="kiosko" className="relative bg-navy-ink text-white">
       {/* transición claro -> oscuro (flush, sin línea blanca) */}
       <div className="fade-to-ink pointer-events-none absolute bottom-full left-0 h-32 w-full" />
 
@@ -86,9 +86,10 @@ export function Kiosko() {
                     initial={false}
                     animate={{
                       opacity: active === i ? 1 : 0,
-                      x: active === i ? 0 : 24,
+                      x: active === i ? 0 : 20,
+                      filter: active === i ? "blur(0px)" : "blur(3px)",
                     }}
-                    transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     style={{ pointerEvents: active === i ? "auto" : "none" }}
                   >
                     <span className="font-display text-6xl font-800 text-white/10">
@@ -119,19 +120,21 @@ export function Kiosko() {
         </div>
       )}
 
-      {/* Móvil: kiosko auto + captions */}
+      {/* Móvil: kiosko auto + captions (con reveal al hacer scroll) */}
       {!isDesktop && (
         <div className="relative px-6 py-16">
-          <AutoKioskoShot />
+          <Reveal>
+            <AutoKioskoShot />
+          </Reveal>
           <div className="mt-10 flex flex-col gap-8">
             {STATES.map((s, i) => (
-              <div key={s.label}>
+              <Reveal key={s.label} delay={i * 0.08}>
                 <span className="font-display text-sm font-700 text-cyan">
                   0{i + 1}
                 </span>
                 <h3 className="font-display text-2xl font-700">{s.label}</h3>
                 <p className="mt-2 text-white/65">{s.body}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>

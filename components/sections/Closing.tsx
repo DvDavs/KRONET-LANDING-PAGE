@@ -29,7 +29,7 @@ export function Closing() {
   return (
     <section
       id="demo"
-      className="relative scroll-mt-24 overflow-hidden bg-navy-ink text-white"
+      className="relative overflow-hidden bg-navy-ink text-white"
     >
       <div className="fade-to-ink absolute -top-1 left-0 h-32 w-full -translate-y-full" />
       {/* glow */}

@@ -16,15 +16,6 @@ const COLS = [
     links: [
       { label: "Sobre Kronet", href: "#top" },
       { label: "Contacto", href: "#demo" },
-      { label: "Suite", href: "#suite" },
-    ],
-  },
-  {
-    title: "Recursos",
-    links: [
-      { label: "Caso de estudio", href: "#caso" },
-      { label: "Documentación", href: "#" },
-      { label: "Soporte", href: "#demo" },
     ],
   },
 ];
@@ -33,13 +24,14 @@ export function Footer() {
   return (
     <footer className="border-t border-navy/10 bg-white">
       <div className="container-grid py-16">
-        <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1.6fr_1fr_1fr] md:gap-12">
+          <div className="col-span-2 md:col-span-1">
             <Wordmark className="h-7 w-auto" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-navy/55">
               Control operativo y optimización de nómina para empresas con
               workforce intensivo.
             </p>
+            {/*}
             <div className="mt-6 flex items-center gap-3">
               <a
                 href="mailto:hola@kronet.app"
@@ -49,6 +41,7 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
               </a>
             </div>
+            */}
           </div>
 
           {COLS.map((col) => (

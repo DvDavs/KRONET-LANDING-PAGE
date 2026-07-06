@@ -60,7 +60,7 @@ const MARQUEE = [
   "Maquila",
   "Retail multisucursal",
   "Universidades",
-  "100–500 empleados",
+  "50–500+ empleados",
   "Biometría de huella",
   "Funciona offline",
   "Auditoría activa",

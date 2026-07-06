@@ -10,7 +10,7 @@ import { useStaticMotion } from "@/lib/motionPref";
 
 export function CaseStudy() {
   return (
-    <section id="caso" className="relative scroll-mt-24 bg-white py-section">
+    <section id="caso" className="relative bg-white py-section">
       <div className="container-grid">
         {/* Bloque 1 — header */}
         <Reveal className="mx-auto max-w-3xl text-center">

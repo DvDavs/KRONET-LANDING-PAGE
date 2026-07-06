@@ -29,7 +29,7 @@ export function Calculator() {
   const r = computeRoi(employees, dailySalary, SCENARIOS[scenario]);
 
   return (
-    <section id="calculadora" className="relative scroll-mt-24 bg-offwhite py-section">
+    <section id="calculadora" className="relative bg-offwhite py-section">
       <div className="container-grid">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow justify-center text-cyan">

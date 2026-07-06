@@ -80,7 +80,7 @@ export function KioskoV2() {
   const current = STATES[i];
 
   return (
-    <section id="kiosko" className="relative scroll-mt-24 bg-navy-ink py-section text-white">
+    <section id="kiosko" className="relative bg-navy-ink py-section text-white">
       <div className="fade-to-ink absolute -top-1 left-0 h-32 w-full -translate-y-full" />
       <div className="dot-grid-dark pointer-events-none absolute inset-0 opacity-40" />
 

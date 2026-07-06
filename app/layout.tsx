@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     "kiosko de asistencia",
   ],
   authors: [{ name: "Kronet" }],
+  icons: {
+    icon: "/brand/isotipo.svg",
+    apple: "/brand/isotipo.svg",
+  },
   openGraph: {
     type: "website",
     locale: "es_MX",

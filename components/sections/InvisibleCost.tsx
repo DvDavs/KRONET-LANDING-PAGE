@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Check, ArrowDown, ArrowRight } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 import { INVISIBLE_COST } from "@/lib/content";
 import { useIsDesktop } from "@/lib/useIsDesktop";
 
@@ -28,7 +29,7 @@ export function InvisibleCost() {
     <section className="relative bg-white">
       {/* Desktop: sticky scroll cinematográfico */}
       {isDesktop && (
-      <div ref={ref} style={{ height: `${PANELS * 90}vh` }}>
+      <div ref={ref} className="relative" style={{ height: `${PANELS * 90}vh` }}>
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <div className="dot-grid pointer-events-none absolute inset-0 opacity-30 [mask-image:radial-gradient(60%_50%_at_50%_50%,black,transparent)]" />
           <div className="container-grid relative">
@@ -110,21 +111,23 @@ export function InvisibleCost() {
       </div>
       )}
 
-      {/* Móvil: bloques verticales */}
+      {/* Móvil: bloques verticales (reveal al hacer scroll) */}
       {!isDesktop && (
       <div className="flex flex-col gap-16 px-6 py-20">
-        <p className="text-sm font-600 uppercase tracking-[0.2em] text-cyan">
-          {INVISIBLE_COST.intro}
-        </p>
+        <Reveal>
+          <p className="text-sm font-600 uppercase tracking-[0.2em] text-cyan">
+            {INVISIBLE_COST.intro}
+          </p>
+        </Reveal>
         {INVISIBLE_COST.habits.map((h) => (
-          <div key={h.title}>
+          <Reveal key={h.title}>
             <h3 className="font-display text-3xl font-700 leading-tight text-navy">
               {h.title}
             </h3>
             <p className="mt-3 text-navy/50">({h.note})</p>
-          </div>
+          </Reveal>
         ))}
-        <div>
+        <Reveal>
           <h3 className="font-display text-2xl font-700 text-navy">
             {INVISIBLE_COST.converge.title} {INVISIBLE_COST.converge.subtitle}
           </h3>
@@ -136,14 +139,18 @@ export function InvisibleCost() {
               </li>
             ))}
           </ul>
-        </div>
-        <h3 className="font-display text-3xl font-300 leading-snug text-navy">
-          {INVISIBLE_COST.proverb[0]} Lo que no se controla,{" "}
-          <span className="font-600 text-cyan">se pierde.</span>
-        </h3>
-        <a href="#caso" className="inline-flex items-center gap-2 font-600 text-navy">
-          {INVISIBLE_COST.bridge} <ArrowRight className="h-5 w-5 text-cyan" />
-        </a>
+        </Reveal>
+        <Reveal>
+          <h3 className="font-display text-3xl font-300 leading-snug text-navy">
+            {INVISIBLE_COST.proverb[0]} Lo que no se controla,{" "}
+            <span className="font-600 text-cyan">se pierde.</span>
+          </h3>
+        </Reveal>
+        <Reveal>
+          <a href="#caso" className="inline-flex items-center gap-2 font-600 text-navy">
+            {INVISIBLE_COST.bridge} <ArrowRight className="h-5 w-5 text-cyan" />
+          </a>
+        </Reveal>
       </div>
       )}
     </section>
@@ -158,9 +165,10 @@ function Panel({ show, children }: { show: boolean; children: React.ReactNode })
       initial={false}
       animate={{
         opacity: show ? 1 : 0,
-        translateY: show ? "-50%" : "-44%",
+        translateY: show ? "-50%" : "-46%",
+        filter: show ? "blur(0px)" : "blur(3px)",
       }}
-      transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       style={{ pointerEvents: show ? "auto" : "none" }}
     >
       {children}

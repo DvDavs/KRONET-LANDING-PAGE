@@ -98,7 +98,7 @@ export function Hero() {
 
           <motion.div className="mt-12" {...iv}>
             <p className="text-xs font-500 uppercase tracking-wider text-muted">
-              Diseñado para 100–500 empleados
+              Diseñado para 50–500+ empleados
             </p>
             <div className="mt-3 flex flex-wrap gap-x-2 gap-y-2 text-sm font-500 text-navy/55">
               {INDUSTRIES.map((ind, i) => (

@@ -40,6 +40,17 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
+    // Offset del navbar fijo. Leemos scroll-padding-top ya RESUELTO a px por el
+    // browser (deriva de --nav-offset) — misma fuente que el scroll nativo, así
+    // ambos paths caen idéntico y se adapta al breakpoint. Nota: leer la var
+    // cruda daría "6.25rem" y parseFloat la tomaría como 6px.
+    const navOffset = () => {
+      const px = parseFloat(
+        getComputedStyle(document.documentElement).scrollPaddingTop
+      );
+      return Number.isFinite(px) ? px : 96;
+    };
+
     // Ancla-links con offset para el navbar fijo
     const onClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement)?.closest(
@@ -51,7 +62,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       const el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
-      lenis.scrollTo(el as HTMLElement, { offset: -80, duration: 1.4 });
+      lenis.scrollTo(el as HTMLElement, { offset: -navOffset(), duration: 1.2 });
     };
     document.addEventListener("click", onClick);
 
