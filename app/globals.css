@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #093d65;
+  --navy-alt: #0c3e63;
+  --navy-ink: #0a1628;
+  --cyan: #28a2b9;
+  --cyan-bright: #3dc5dd;
+  --muted: #6b7280;
+  --offwhite: #fafafa;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+  /* Lenis controla el scroll; deshabilitamos el smooth nativo cuando está activo */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--navy);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11", "cv05";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(40, 162, 185, 0.22);
+    color: var(--navy);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display), var(--font-sans), sans-serif;
+    text-wrap: balance;
+  }
+
+  /* Focus visible accesible (brief §Accesibilidad) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  .container-grid {
+    @apply mx-auto w-full max-w-grid px-6 md:px-12;
+  }
+
+  /* Texto con degradado cyan → navy para números / palabras clave */
+  .text-cyan-grad {
+    background: linear-gradient(135deg, #3dc5dd 0%, #28a2b9 55%, #1c8296 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 30px rgba(40, 162, 185, 0.55);
+  }
+
+  /* Grid de puntos (lenguaje visual de los posts de marketing) */
+  .dot-grid {
+    background-image: radial-gradient(
+      circle,
+      rgba(40, 162, 185, 0.16) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+  .dot-grid-dark {
+    background-image: radial-gradient(
+      circle,
+      rgba(125, 212, 226, 0.1) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+
+  /* Transición claro → oscuro (islas navy del brief) */
+  .fade-to-ink {
+    background: linear-gradient(180deg, transparent 0%, var(--navy-ink) 100%);
+  }
+  .fade-from-ink {
+    background: linear-gradient(180deg, var(--navy-ink) 0%, transparent 100%);
+  }
+
+  /* Card sobre fondo oscuro (estilo posts). Sin backdrop-filter por
+     performance: el gradiente opaco logra el mismo look sin costo de compositing. */
+  .glass-dark {
+    background: linear-gradient(
+      160deg,
+      rgba(18, 46, 74, 0.92) 0%,
+      rgba(10, 22, 40, 0.92) 100%
+    );
+    border: 1px solid rgba(125, 212, 226, 0.14);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.72rem] font-semibold uppercase tracking-[0.22em];
+  }
+
+  /* Pill CTA primario cyan */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cyan px-7 py-3.5 text-[0.95rem] font-semibold text-white shadow-cyan transition-all duration-300 ease-brand hover:-translate-y-0.5 hover:bg-cyan-bright;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-1.5 text-[0.95rem] font-semibold text-cyan transition-colors duration-300 hover:text-navy;
+  }
+}
+
+/* Respeto a prefers-reduced-motion (brief §8) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Slider de la calculadora ROI */
+.kronet-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--cyan) 0%,
+    var(--cyan) var(--pct, 44%),
+    rgba(9, 61, 101, 0.12) var(--pct, 44%)
+  );
+  outline: none;
+}
+.kronet-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--cyan);
+  box-shadow: 0 4px 12px rgba(40, 162, 185, 0.4);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.kronet-range::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.kronet-range::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--cyan);
+  box-shadow: 0 4px 12px rgba(40, 162, 185, 0.4);
+  cursor: pointer;
+}
+.kronet-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(9, 61, 101, 0.12);
+}
+
+/* Mac window chrome para mockups (tratamiento del brief) */
+.mac-chrome {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1b2733;
+  box-shadow: 0 40px 100px -30px rgba(9, 61, 101, 0.45);
+}
+.mac-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 14px;
+  background: #22303d;
+}
+.mac-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
