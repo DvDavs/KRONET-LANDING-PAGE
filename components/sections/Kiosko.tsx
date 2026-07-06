@@ -78,7 +78,7 @@ export function Kiosko() {
               <div className="relative">
                 <KioskoShot state={STATES[active].state} />
               </div>
-              <div className="relative min-h-[220px]">
+              <div className="relative min-h-[270px]">
                 {STATES.map((s, i) => (
                   <motion.div
                     key={s.label}

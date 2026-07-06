@@ -150,7 +150,7 @@ export const SUITE = [
     icon: "bar-chart",
     title: "Reportes que ya no haces tú.",
     kicker: "Dashboard de Control",
-    image: "/app/reporte.png",
+    image: "/app/reporte-status.png",
     alt: "Reporte de asistencias generado automáticamente por Kronet",
     features: [
       "Generación automática de asistencias",

@@ -80,7 +80,12 @@ export function Closing() {
           className="mt-10 flex flex-col items-center gap-5"
           {...iv}
         >
-          <a href="#demo" className="btn-primary !px-8 !py-4 !text-base">
+          <a
+            href="https://wa.me/529514709685?text=Hola%2C%20me%20gustar%C3%ADa%20que%20me%20brindara%20m%C3%A1s%20informaci%C3%B3n%20de%20Kronet"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary !px-8 !py-4 !text-base"
+          >
             <CalendarCheck className="h-5 w-5" />
             Agendar demo · 30 min · Sin compromiso
           </a>

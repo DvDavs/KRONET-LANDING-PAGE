@@ -81,7 +81,12 @@ export function Hero() {
             className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4"
             {...iv}
           >
-            <a href="#demo" className="btn-primary">
+            <a
+              href="https://wa.me/529514709685?text=Hola%2C%20me%20gustar%C3%ADa%20que%20me%20brindara%20m%C3%A1s%20informaci%C3%B3n%20de%20Kronet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+            >
               <CalendarCheck className="h-4 w-4" />
               Agendar demo
             </a>

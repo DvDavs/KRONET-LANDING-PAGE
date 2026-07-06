@@ -4,11 +4,12 @@ import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { MacWindow } from "@/components/ui/MacWindow";
 import { HOW_IT_WORKS } from "@/lib/content";
+import { ZoomIn } from "lucide-react";
 
 const MEDIA = [
-  { src: "/kiosko/idle.png", alt: "Kiosko Kronet preconfigurado y conectado", dark: true },
-  { src: "/app/huella-dedo.png", alt: "Flujo guiado de enrolamiento de huella, selección de dedo", dark: false },
-  { src: "/app/reporte-status.png", alt: "Reporte de asistencias con estatus por empleado: retardo, tolerancia, normal, falta", dark: false },
+  { src: "/kiosko/idle.png", alt: "Kiosko Kronet preconfigurado y conectado", dark: true, aspect: "1978/1236", zoom: 1.55 },
+  { src: "/app/huella-dedo.png", alt: "Flujo guiado de enrolamiento de huella, selección de dedo", dark: false, aspect: "1332/1144" },
+  { src: "/app/reporte-status.png", alt: "Reporte de asistencias con estatus por empleado: retardo, tolerancia, normal, falta", dark: false, aspect: "920/672" },
 ] as const;
 
 export function HowItWorks() {
@@ -36,26 +37,36 @@ export function HowItWorks() {
                 <div className="relative">
                   {MEDIA[i].dark ? (
                     <div className="overflow-hidden rounded-xl border border-navy/10 bg-navy-ink shadow-card">
-                      <div className="relative aspect-[16/10]">
-                        <Image
-                          src={MEDIA[i].src}
-                          alt={MEDIA[i].alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover object-top"
-                        />
+                      <div
+                        className="relative"
+                        style={{ aspectRatio: MEDIA[i].aspect }}
+                      >
+                        <div className="absolute inset-2 sm:inset-3">
+                          <Image
+                            src={MEDIA[i].src}
+                            alt={MEDIA[i].alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-contain"
+                          />
+                        </div>
                       </div>
                     </div>
                   ) : (
                     <MacWindow>
-                      <div className="relative aspect-[16/10]">
-                        <Image
-                          src={MEDIA[i].src}
-                          alt={MEDIA[i].alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover object-top"
-                        />
+                      <div
+                        className="relative bg-white"
+                        style={{ aspectRatio: MEDIA[i].aspect }}
+                      >
+                        <div className="absolute inset-3 sm:inset-4">
+                          <Image
+                            src={MEDIA[i].src}
+                            alt={MEDIA[i].alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 33vw"
+                            className="object-contain"
+                          />
+                        </div>
                       </div>
                     </MacWindow>
                   )}

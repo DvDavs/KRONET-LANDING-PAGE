@@ -12,7 +12,12 @@ const URLS = [
   "kronet.app/asistencias",
   "kronet.app/horarios",
   "kronet.app/reportes",
-];
+] as const;
+const MEDIA = [
+  { aspect: "1660/1297", mobileMaxW: "" },
+  { aspect: "907/1247", mobileMaxW: "max-w-[320px]" },
+  { aspect: "920/672", mobileMaxW: "" },
+] as const;
 
 export function Suite() {
   return (
@@ -71,17 +76,24 @@ export function Suite() {
                   delay={0.1}
                   className={cn(flip && "md:order-1")}
                 >
-                  <MacWindow url={URLS[i]}>
-                    <div className="relative aspect-[16/10]">
-                      <Image
-                        src={mod.image}
-                        alt={mod.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                  </MacWindow>
+                  <div className={cn("mx-auto md:max-w-none", MEDIA[i].mobileMaxW)}>
+                    <MacWindow url={URLS[i]}>
+                      <div
+                        className="relative bg-white"
+                        style={{ aspectRatio: MEDIA[i].aspect }}
+                      >
+                        <div className="absolute inset-3 sm:inset-4">
+                          <Image
+                            src={mod.image}
+                            alt={mod.alt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </MacWindow>
+                  </div>
                 </Reveal>
               </div>
             );

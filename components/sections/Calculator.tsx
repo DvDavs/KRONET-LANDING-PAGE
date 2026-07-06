@@ -195,7 +195,12 @@ export function Calculator() {
               <Sparkles className="h-4 w-4" />
               Recibir análisis personalizado
             </a>
-            <a href="#demo" className="btn-ghost group">
+            <a
+              href="https://wa.me/529514709685?text=Hola%2C%20me%20gustar%C3%ADa%20que%20me%20brindara%20m%C3%A1s%20informaci%C3%B3n%20de%20Kronet"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-ghost group"
+            >
               Agendar demo
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>

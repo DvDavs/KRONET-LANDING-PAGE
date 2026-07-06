@@ -56,7 +56,8 @@ export function KioskoShot({
       )}
       <div className="rounded-[22px] border border-white/10 bg-gradient-to-b from-[#141d28] to-[#0a1119] p-2.5 shadow-ambient-dark sm:p-3">
         <div className="relative overflow-hidden rounded-[14px] bg-navy-ink ring-1 ring-white/5">
-          <div className="relative aspect-[16/10] w-full">
+          {/* aspect exacto de la captura real (1660x1297) — nada se recorta */}
+          <div className="relative aspect-[1660/1297] w-full">
             {ORDER.map((s) => {
               const shot = KIOSKO_SHOTS[s];
               const isActive = s === state;
@@ -70,7 +71,7 @@ export function KioskoShot({
                   priority={priority && s === "publicidad"}
                   sizes="(max-width: 1024px) 100vw, 640px"
                   className={cn(
-                    "object-cover object-center transition-opacity duration-700 ease-brand",
+                    "object-contain transition-opacity duration-700 ease-brand",
                     isActive ? "opacity-100" : "opacity-0"
                   )}
                 />

@@ -1,4 +1,4 @@
-import { Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { Wordmark } from "@/components/ui/brand";
 
 const COLS = [
@@ -42,18 +42,11 @@ export function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="mailto:hola@kronet.mx"
+                href="mailto:hola@kronet.app"
                 aria-label="Correo"
                 className="grid h-9 w-9 place-items-center rounded-lg border border-navy/10 text-navy/60 transition-colors hover:border-cyan hover:text-cyan"
               >
                 <Mail className="h-4 w-4" />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="grid h-9 w-9 place-items-center rounded-lg border border-navy/10 text-navy/60 transition-colors hover:border-cyan hover:text-cyan"
-              >
-                <Linkedin className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -80,10 +73,9 @@ export function Footer() {
         <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-navy/10 pt-8 text-sm text-navy/50 sm:flex-row">
           <p>© 2026 Kronet · Control operativo y optimización de nómina</p>
           <p>
-            <a href="mailto:hola@kronet.mx" className="hover:text-cyan">
-              hola@kronet.mx
+            <a href="mailto:hola@kronet.app" className="hover:text-cyan">
+              hola@kronet.app
             </a>{" "}
-            · LinkedIn
           </p>
         </div>
       </div>
